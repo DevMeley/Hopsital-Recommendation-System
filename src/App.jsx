@@ -4,14 +4,13 @@ import Nav from "./components/Nav";
 import SideBar from "./components/SideBar";
 
 function App() {
+  
   return (
     <>
       <div className="App">
-        <div className="main-content">
-        <SideBar />
-        <MainPage />
+          <Nav />
+        <MainPage/>
         </div>
-      </div>
     </>
   );
 }

@@ -1,53 +1,73 @@
-.main-page{
-    flex: 4;
-    margin-left: 80px;
-    margin-right: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 30px 20px;
-    border-bottom: 2px solid rgb(66, 66, 66);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 20px;
+  border-bottom: 2px solid rgb(66, 66, 66);
 }
 .inputs input,
 .inputs select,
 .inputs textarea {
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.2s;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  border: none;
+  width: 250px;
 }
-select{
-    width: 350px;
-    border: none;
+select {
+  width: 350px;
+  border: none;
 }
-button{
-    padding: 12px 32px;
-    border-radius: 8px;
-    border: none;
-    box-shadow: 0 8px 16px rgba(182, 182, 182, 0.07);
-    cursor: pointer;
+button {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 8px 16px rgba(182, 182, 182, 0.07);
+  cursor: pointer;
+  margin-top: 20px;
 }
-button:hover{
-    background-color: rgb(51, 51, 51);
+button:hover {
+  background-color: rgb(51, 51, 51);
 }
 .inputs label {
-    font-weight: 500;
-    margin-bottom: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.left,.right-input{
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+.left,
+.right-input {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
-hr{
-    border: 1ps solid white;
+hr {
+  border: 1ps solid white;
 }
+
