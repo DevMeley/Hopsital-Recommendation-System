@@ -1,56 +1,67 @@
 import React, { useState } from "react";
 import "../Styles/MainPage.css";
 import Nav from "./Nav";
+import Recommendations from "./Recommendations";
 
 function MainPage() {
-  const [formData, setFormData] =  useState({
+  const[recommendation, setRecommendation] = useState([])
+  const [formData, setFormData] = useState({
     location: "",
     service_needed: "",
     cost_preference: "",
-    quality_preference: ""
-  })
+    quality_preference: "",
+  });
 
-  const handleGetRecommendation = async (e) =>{
-    e.preventDefault()
+  const handleGetRecommendation = async (e) => {
+    e.preventDefault();
     console.log(
       formData.location,
       formData.service_needed,
       formData.cost_preference,
       formData.quality_preference
-    )
-    
-    
-    // const formData = new FormData()
-    // formData.append("location", title)
-    // formData.append("service_needed", body)
-    // formData.append("cost_preference", body)
-    // formData.append("quality_preference", body)
-
+    );
 
     try {
-      const res = await fetch("https://hospital-recommender-system.onrender.com/recommend", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://hospital-recommender-system.onrender.com/recommend",
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       console.log(data);
-
+      setRecommendation(data)
     } catch (error) {
       console.log(error);
     }
-    
-  }
+  };
   return (
     <div className="main-page">
       <div className="inputs">
         <div className="left">
           <label>
-            <p>Location(e.g Ikeja) </p> 
-            <input type="text" value={formData.location} onChange={(e) => setFormData({...formData, location:e.target.value})}/>
+            <p>Location(e.g Ikeja) </p>
+            <input
+              type="text"
+              value={formData.location}
+              onChange={(e) =>
+                setFormData({ ...formData, location: e.target.value })
+              }
+            />
           </label>
           <label>
-            <p>Service(e.g General Medicine) </p> 
-            <input type="text" value={formData.service_needed} onChange={(e) => setFormData({...formData, service_needed:e.target.value})}/>
+            <p>Service(e.g General Medicine) </p>
+            <input
+              type="text"
+              value={formData.service_needed}
+              onChange={(e) =>
+                setFormData({ ...formData, service_needed: e.target.value })
+              }
+            />
           </label>
         </div>
         <div className="right">
@@ -58,7 +69,13 @@ function MainPage() {
           <div className="right-input">
             <label>
               <p>Cost</p>
-              <select name="Cost" value={formData.cost_preference} onChange={(e) => setFormData({...formData, cost_preference:e.target.value})}>
+              <select
+                name="Cost"
+                value={formData.cost_preference}
+                onChange={(e) =>
+                  setFormData({ ...formData, cost_preference: e.target.value })
+                }
+              >
                 <option value="">Value</option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
@@ -67,7 +84,16 @@ function MainPage() {
             </label>
             <label>
               <p>Quality</p>
-              <select name="Quality"value={formData.quality_preference} onChange={(e) => setFormData({...formData, quality_preference:e.target.value})}>
+              <select
+                name="Quality"
+                value={formData.quality_preference}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    quality_preference: e.target.value,
+                  })
+                }
+              >
                 <option value="">Value</option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
@@ -75,11 +101,17 @@ function MainPage() {
               </select>
             </label>
           </div>
-          </div>
-          <button className="get" onClick={handleGetRecommendation}>Get Recommendation</button>
         </div>
-        Recommendations
+        <button className="get" onClick={handleGetRecommendation}>
+          Get Recommendation
+        </button>
       </div>
+      <div className="Recommendation">
+        {recommendation.map((recommend) => (
+            <Recommendations key={recommend.name} recommend={recommend}/>
+          ))}
+      </div>
+    </div>
   );
 }
 

@@ -70,4 +70,7 @@ button:hover {
 hr {
   border: 1ps solid white;
 }
+.recommended{
+  border-bottom: 2px solid gray;
+}
 
