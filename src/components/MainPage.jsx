@@ -107,6 +107,7 @@ function MainPage() {
         </button>
       </div>
       <div className="Recommendation">
+          <h3>Recommendation</h3>
         {recommendation.map((recommend) => (
             <Recommendations key={recommend.name} recommend={recommend}/>
           ))}
