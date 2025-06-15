@@ -4,20 +4,40 @@ import Nav from "./Nav";
 
 function MainPage() {
   const [formData, setFormData] =  useState({
-    Location: "",
-    Service: "",
-    Cost: "",
-    Quality: ""
+    location: "",
+    service_needed: "",
+    cost_preference: "",
+    quality_preference: ""
   })
 
-  const handleGetRecommendation = (e) =>{
+  const handleGetRecommendation = async (e) =>{
     e.preventDefault()
     console.log(
-      formData.Location,
-      formData.Service,
-      formData.Cost,
-      formData.Quality
+      formData.location,
+      formData.service_needed,
+      formData.cost_preference,
+      formData.quality_preference
     )
+    
+    
+    // const formData = new FormData()
+    // formData.append("location", title)
+    // formData.append("service_needed", body)
+    // formData.append("cost_preference", body)
+    // formData.append("quality_preference", body)
+
+
+    try {
+      const res = await fetch("https://hospital-recommender-system.onrender.com/recommend", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      console.log(data);
+
+    } catch (error) {
+      console.log(error);
+    }
     
   }
   return (
@@ -26,11 +46,11 @@ function MainPage() {
         <div className="left">
           <label>
             <p>Location(e.g Ikeja) </p> 
-            <input type="text" value={formData.Location} onChange={(e) => setFormData({...formData, Location:e.target.value})}/>
+            <input type="text" value={formData.location} onChange={(e) => setFormData({...formData, location:e.target.value})}/>
           </label>
           <label>
             <p>Service(e.g General Medicine) </p> 
-            <input type="text" value={formData.Service} onChange={(e) => setFormData({...formData, Service:e.target.value})}/>
+            <input type="text" value={formData.service_needed} onChange={(e) => setFormData({...formData, service_needed:e.target.value})}/>
           </label>
         </div>
         <div className="right">
@@ -38,20 +58,20 @@ function MainPage() {
           <div className="right-input">
             <label>
               <p>Cost</p>
-              <select name="Cost" value={formData.Cost} onChange={(e) => setFormData({...formData, Cost:e.target.value})}>
+              <select name="Cost" value={formData.cost_preference} onChange={(e) => setFormData({...formData, cost_preference:e.target.value})}>
                 <option value="">Value</option>
-                <option value="0">High</option>
-                <option value="5">Medium</option>
-                <option value="10">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </label>
             <label>
               <p>Quality</p>
-              <select name="Quality"value={formData.Quality} onChange={(e) => setFormData({...formData, Quality:e.target.value})}>
+              <select name="Quality"value={formData.quality_preference} onChange={(e) => setFormData({...formData, quality_preference:e.target.value})}>
                 <option value="">Value</option>
-                <option value="0">High</option>
-                <option value="5">Medium</option>
-                <option value="10">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </label>
           </div>
