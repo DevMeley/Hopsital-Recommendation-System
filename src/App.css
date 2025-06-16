@@ -3,4 +3,8 @@
 }
 .Nav{
   text-align: center;
+  position: fixed;
+  background-color: rgb(24, 24, 24);
+  right: 0;
+  left: 0;
 }
