@@ -1,7 +1,7 @@
-.main-content{
+.main-content {
   display: flex;
 }
-.Nav{
+.Nav {
   text-align: center;
   position: fixed;
   background-color: rgb(24, 24, 24);

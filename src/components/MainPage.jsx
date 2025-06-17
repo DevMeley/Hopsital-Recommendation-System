@@ -4,7 +4,8 @@ import Nav from "./Nav";
 import Recommendations from "./Recommendations";
 
 function MainPage() {
-  const[recommendation, setRecommendation] = useState([])
+  const [recommendation, setRecommendation] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     location: "",
     service_needed: "",
@@ -22,6 +23,7 @@ function MainPage() {
     );
 
     try {
+      setIsLoading(true);
       const res = await fetch(
         "https://hospital-recommender-system.onrender.com/recommend",
         {
@@ -34,7 +36,8 @@ function MainPage() {
       );
       const data = await res.json();
       console.log(data);
-      setRecommendation(data)
+      setRecommendation(data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -107,10 +110,16 @@ function MainPage() {
         </button>
       </div>
       <div className="Recommendation">
-          <h3>Recommendation</h3>
-        {recommendation.map((recommend) => (
-            <Recommendations key={recommend.name} recommend={recommend}/>
-          ))}
+        <h3>Recommendation</h3>
+        {isLoading ? (
+          <img src="src\assets\Spinner@1x-2.8s-60px-60px.gif" alt="" />
+        ) : (
+          <div>
+            {recommendation.map((recommend) => (
+              <Recommendations key={recommend.name} recommend={recommend} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
