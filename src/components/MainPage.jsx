@@ -112,7 +112,7 @@ function MainPage() {
       <div className="Recommendation">
         <h3>Recommendation</h3>
         {isLoading ? (
-          <img src="src\assets\Spinner@1x-2.8s-60px-60px.gif" alt="" />
+          <img src="src/assets/Spinner@1x-2.8s-60px-60px.gif" alt="" />
         ) : (
           <div>
             {recommendation.map((recommend) => (
