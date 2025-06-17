@@ -115,7 +115,7 @@ function MainPage() {
         <h3>Recommendation</h3>
         {error}
         {isLoading ? (
-          <img src="/assets/Spinner@1x-2.8s-60px-60px.gif" alt="" />
+          <img src="/assets/spinner.gif" alt="" />
         ) : (
           <div>
             {recommendation.map((recommend) => (
