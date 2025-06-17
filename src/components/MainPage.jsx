@@ -6,6 +6,7 @@ import Recommendations from "./Recommendations";
 function MainPage() {
   const [recommendation, setRecommendation] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("")
   const [formData, setFormData] = useState({
     location: "",
     service_needed: "",
@@ -40,6 +41,7 @@ function MainPage() {
       setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setError(error)
     }
   };
   return (
@@ -111,8 +113,9 @@ function MainPage() {
       </div>
       <div className="Recommendation">
         <h3>Recommendation</h3>
+        {error}
         {isLoading ? (
-          <img src="src/assets/Spinner@1x-2.8s-60px-60px.gif" alt="" />
+          <img src="/assets/Spinner@1x-2.8s-60px-60px.gif" alt="" />
         ) : (
           <div>
             {recommendation.map((recommend) => (
