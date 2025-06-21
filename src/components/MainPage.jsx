@@ -59,7 +59,7 @@ function MainPage() {
             />
           </label>
           <label>
-            <p>Service(e.g General Medicine) </p>
+            <p>Service Type(e.g General Medicine) </p>
             <input
               type="text"
               value={formData.service_needed}
@@ -73,7 +73,7 @@ function MainPage() {
           <h2>Preferences</h2>
           <div className="right-input">
             <label>
-              <p>Cost</p>
+              <p>Treatment Cost</p>
               <select
                 name="Cost"
                 value={formData.cost_preference}
@@ -82,13 +82,13 @@ function MainPage() {
                 }
               >
                 <option value="">Value</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
+                <option value="High">Expensive</option>
+                <option value="Medium">Moderate</option>
+                <option value="Low">Affordable</option>
               </select>
             </label>
             <label>
-              <p>Quality</p>
+              <p>Service Quality</p>
               <select
                 name="Quality"
                 value={formData.quality_preference}
@@ -100,9 +100,9 @@ function MainPage() {
                 }
               >
                 <option value="">Value</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
+                <option value="High">High-Quality</option>
+                <option value="Medium">Standard</option>
+                <option value="Low">Low-Quality</option>
               </select>
             </label>
           </div>
