@@ -81,7 +81,7 @@ function MainPage() {
                   setFormData({ ...formData, cost_preference: e.target.value })
                 }
               >
-                <option value="">Value</option>
+                <option value="" className="option">value</option>
                 <option value="High">Expensive</option>
                 <option value="Medium">Moderate</option>
                 <option value="Low">Affordable</option>
@@ -99,7 +99,7 @@ function MainPage() {
                   })
                 }
               >
-                <option value="">Value</option>
+                <option value="" className="option">value</option>
                 <option value="High">High-Quality</option>
                 <option value="Medium">Standard</option>
                 <option value="Low">Low-Quality</option>
@@ -112,7 +112,7 @@ function MainPage() {
         </button>
       </div>
       <div className="Recommendation">
-        <h3>Recommendation</h3>
+        <h3>Recommendations</h3>
         {error}
         {isLoading ? (
           <img src="assets/spinner.gif" alt="Loading..." />

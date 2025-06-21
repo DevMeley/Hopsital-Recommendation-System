@@ -69,3 +69,7 @@ hr {
 .recommended {
   border-bottom: 2px solid gray;
 }
+
+.option{
+  color: gray;
+}
