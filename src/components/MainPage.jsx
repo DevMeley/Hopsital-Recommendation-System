@@ -2,48 +2,9 @@ import React, { useState } from "react";
 import "../Styles/MainPage.css";
 import Nav from "./Nav";
 import Recommendations from "./Recommendations";
+import { Link } from "react-router";
 
-function MainPage() {
-  const [recommendation, setRecommendation] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("")
-  const [formData, setFormData] = useState({
-    location: "",
-    service_needed: "",
-    cost_preference: "",
-    quality_preference: "",
-  });
-
-  const handleGetRecommendation = async (e) => {
-    e.preventDefault();
-    console.log(
-      formData.location,
-      formData.service_needed,
-      formData.cost_preference,
-      formData.quality_preference
-    );
-
-    try {
-      setIsLoading(true);
-      const res = await fetch(
-        "https://hospital-recommender-system.onrender.com/recommend",
-        {
-          method: "POST",
-          body: JSON.stringify(formData),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await res.json();
-      console.log(data);
-      setRecommendation(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setError(error)
-    }
-  };
+function MainPage({ formData, handleGetRecommendation, setFormData }) {
   return (
     <div className="main-page">
       <div className="inputs">
@@ -81,7 +42,9 @@ function MainPage() {
                   setFormData({ ...formData, cost_preference: e.target.value })
                 }
               >
-                <option value="" className="option">value</option>
+                <option value="" className="option">
+                  value
+                </option>
                 <option value="High">Expensive</option>
                 <option value="Medium">Moderate</option>
                 <option value="Low">Affordable</option>
@@ -99,7 +62,9 @@ function MainPage() {
                   })
                 }
               >
-                <option value="" className="option">value</option>
+                <option value="" className="option">
+                  value
+                </option>
                 <option value="High">High-Quality</option>
                 <option value="Medium">Standard</option>
                 <option value="Low">Low-Quality</option>
@@ -107,22 +72,11 @@ function MainPage() {
             </label>
           </div>
         </div>
-        <button className="get" onClick={handleGetRecommendation}>
-          Get Recommendation
-        </button>
-      </div>
-      <div className="Recommendation">
-        <h3>Recommendations</h3>
-        {error}
-        {isLoading ? (
-          <img src="assets/spinner.gif" alt="Loading..." />
-        ) : (
-          <div>
-            {recommendation.map((recommend) => (
-              <Recommendations key={recommend.name} recommend={recommend} />
-            ))}
-          </div>
-        )}
+        {/* <Link to={'/recommend'}> */}
+          <button className="get" onClick={handleGetRecommendation}>
+            Get Recommendation
+          </button>
+        {/* </Link> */}
       </div>
     </div>
   );
