@@ -17,6 +17,7 @@ function Recommendations({ recommendation, isLoading }) {
                   <th>Name</th>
                   <th>Services</th>
                   <th>Address</th>
+                  <th>Recommendation level</th>
                 </tr>
               </thead>
               <tbody>
@@ -26,6 +27,7 @@ function Recommendations({ recommendation, isLoading }) {
                     <td>{recommend.name}</td>
                     <td>{recommend.services}</td>
                     <td>{recommend.full_address}</td>
+                    <td>{recommend.recommendation_score > 0.5 ? "Highly Recommeded" : "Not recommended"}</td>
                   </tr>
                 ))}
               </tbody>

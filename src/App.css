@@ -14,11 +14,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 30px;
+}
+.welcome-txt{
+  background-color:  rgba(119, 119, 119, 0.7);
+padding: 16px;
 }
 .welcome-txt h1{
-  color: rgb(15, 15, 15);
+  color: white;
+  /* color: rgb(15, 15, 15); */
 }
-
+.explore{
+  width: 200px;
+  font-size: 24px;
+  font-weight: 900;
+}
 .main-content {
   display: flex;
 }
@@ -41,11 +51,9 @@
 }
 .Recommendation{
   margin-left: 120px;
-  padding-top: 120px;
+  padding-top: 80px;
 }
 
-
-/* ...existing code... */
 
 .Table {
   width: 90%;
