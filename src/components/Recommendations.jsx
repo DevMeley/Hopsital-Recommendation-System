@@ -1,7 +1,7 @@
 import React from "react";
 import '../App.css'
 
-function Recommendations({ recommendation, isLoading }) {
+function Recommendations({ recommendation, isLoading, error }) {
   return (
     <div>
       <div className="Recommendation">

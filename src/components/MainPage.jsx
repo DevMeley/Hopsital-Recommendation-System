@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import Recommendations from "./Recommendations";
 import { Link } from "react-router";
 
-function MainPage({ formData, handleGetRecommendation, setFormData }) {
+function MainPage({ formData, handleGetRecommendation, setFormData, error }) {
   return (
     <div className="main-page">
       <div className="inputs">
@@ -78,6 +78,7 @@ function MainPage({ formData, handleGetRecommendation, setFormData }) {
           </button>
         {/* </Link> */}
       </div>
+        {error && <div className="error-message">{error}</div>}
     </div>
   );
 }

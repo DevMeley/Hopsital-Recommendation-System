@@ -73,3 +73,11 @@ hr {
 .option{
   color: gray;
 }
+.error-message {
+  color: #fff;
+  background: #d32f2f;
+  padding: 12px 20px;
+  border-radius: 6px;
+  margin: 16px 0;
+  text-align: center;
+}

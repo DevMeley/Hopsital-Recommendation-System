@@ -21,15 +21,10 @@ function App() {
 
   const handleGetRecommendation = async (e) => {
     e.preventDefault();
-    console.log(
-      formData.location,
-      formData.service_needed,
-      formData.cost_preference,
-      formData.quality_preference
-    );
+    setError(""); // Clear previous errors
+    setIsLoading(true);
 
     try {
-      setIsLoading(true);
       const res = await fetch(
         "https://hospital-recommender-system.onrender.com/recommend",
         {
@@ -40,43 +35,52 @@ function App() {
           },
         }
       );
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(
+          errorData.message 
+        );
+      }
+
       const data = await res.json();
-      navigate("/recommend");
-      console.log(data);
       setRecommendation(data);
+      console.log(data);
+      navigate("/recommend");
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
+      setError(error.message || "Internal Server Error")
       console.log(error);
-      setError(error);
     }
   };
   return (
     <>
       <div children="App">
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/recommendation"
-              element={
-                <MainPage
-                  formData={formData}
-                  handleGetRecommendation={handleGetRecommendation}
-                  setFormData={setFormData}
-                />
-              }
-            />
-            <Route
-              path="/recommend"
-              element={
-                <Recommendations
-                  isLoading={isLoading}
-                  recommendation={recommendation}
-                  error={error}
-                />
-              }
-            />
-          </Routes>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/recommendation"
+            element={
+              <MainPage
+                formData={formData}
+                handleGetRecommendation={handleGetRecommendation}
+                setFormData={setFormData}
+                error={error}
+              />
+            }
+          />
+          <Route
+            path="/recommend"
+            element={
+              <Recommendations
+                isLoading={isLoading}
+                recommendation={recommendation}
+              />
+            }
+          />
+        </Routes>
       </div>
     </>
   );
