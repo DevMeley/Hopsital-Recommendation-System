@@ -58,7 +58,7 @@ padding: 16px;
 .Table {
   width: 90%;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .Table table {
@@ -67,7 +67,7 @@ padding: 16px;
 }
 
 .Table th, .Table td {
-  padding: 24px 20px;
+  padding: 16px 18px;
   text-align: left;
   border: 1px solid rgb(197, 31, 212);
 }
@@ -79,7 +79,10 @@ padding: 16px;
   letter-spacing: 1px;
 }
 
-
+.rec-btn{
+  background-color: rgb(214, 71, 214);
+  padding: 16px 16px;
+}
 
 .Recommendation h3 {
   margin-top: 32px;

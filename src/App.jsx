@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router";
 import Home from "./components/Home";
 import MainPage from "./components/MainPage";
 import Nav from "./components/Nav";
-import SideBar from "./components/SideBar";
 import Recommendations from "./components/Recommendations";
 import { useState } from "react";
 
