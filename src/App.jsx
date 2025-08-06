@@ -20,7 +20,8 @@ function App() {
 
   const handleGetRecommendation = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
+    console.log(formData)
+    setError("")
     setIsLoading(true);
 
     try {
